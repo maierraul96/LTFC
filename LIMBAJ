@@ -1,0 +1,53 @@
+LIMBAJUL CASNICIEI - LTFC
+
+<RUTINA_ZILNICA> --> <DORINTE> <MISIUNI_PENTRU_SOT>
+
+	<DORINTE> --> ~NOTITE~ \n <LISTA_DE_DORINTE> \n ~GATA_CU_NOTITELE~
+
+		<LISTA_DE_DORINTE> --> <DORINTA> / <DORINTA> <LISTA_DE_DORINTE>
+
+		<DORINTA> --> <SOI_NOTITA> <LISTA_DE_NOTITE>
+
+			<SOI_NOTITA> --> NOTITA_NUMAR_INTREG / NOTITA_NUMAR_ZECIMAL / NOTITA_NUMAR_TEXT / INSIRUIRE
+
+			<LISTA_DE_NOTITE> --> <NOTITA> / <NOTITA> < LISTA_DE_NOTITE>
+
+					<NOTITA> --> #[A-Z]+ U [a-z]+ [0-9]*
+
+	<MISIUNI_PENTRU_SOT> --> ~MISIUNI_PENTRU_SOT~ \n <MISIUNI> \n ~SOTIA_E_MANDRA~
+
+		<MISIUNI> --> <MISIUNE> / <MISIUNE> <MISIUNI>
+
+			<MISIUNE> --> <RAZGANDIRE> / <DESTAINUIRE> / <NOTARE> / <DECIDERE> / <ONORARE>
+
+				<RAZGANDIRE> --> <NOTITA> devine <GAND>
+
+					<GAND> --> <IDEE> / [(] <IDEE> <LEGATURA> <GAND> [)]
+
+						<IDEE> --> <NOTITA> / <ADHOC>
+
+							<ADHOC> --> <NUMAR_INTREG> / <NUMAR_ZECIMAL> / <TEXT>
+
+								<NUMAR_INTREG> --> i[-][1-9]+ [0-9]*
+
+								<NUMAR_ZECIMAL> --> z[-]0<PARTE_FRACTIONARA> / z[-][1-9]+ [0-9]*<PARTE_FRACTIONARA> / <NUMAR_INTREG>
+
+									<PARTE_FRACTIONARA> --> .[0-9]*[1-9]
+
+								<TEXT> --> t"[0-9;a-z;A-Z]*"
+
+						<LEGATURA> --> + / - / * / \/
+
+				<DESTAINUIRE> --> destainuie(<NOTITA>)
+
+				<NOTARE> --> noteaza ( de_la <CUNOSCATOR> pe <NOTITA> )
+
+					<CUNOSCATOR> --> c[A-Z]:/<CALE>
+
+						<CALE> --> <FOLDER>.txt / <FOLDER>/<CALE>
+
+							<FOLDER> --> [0-9;a-z;A-Z]+
+
+				<DECIDERE> --> no_daca <IDEE> atunci <MISIUNI> daca_nu <MISIUNI>
+
+				<ONORARE> --> atata_timp_cat <IDEE> onoreaza <MISIUNI>
