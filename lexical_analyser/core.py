@@ -28,7 +28,17 @@ class AnalyserCore:
         "atunci": 23,
         "daca_nu": 24,
         "atata_timp_cat": 25,
-        "onoreaza": 26
+        "onoreaza": 26,
+        "atat": 27,
+        "bine?": 28,
+        "TEANC_DE": 29,
+        "este": 30,
+        "si": 31,
+        "sau": 32,
+        "ii_mai_mare_decat": 33,
+        "ii_mai_mic_decat": 34,
+        "GATA_CU_ONORAREA": 35,
+        "nu_este": 36
     }
 
     CATEGORY = {"#": "NOTITA",
@@ -57,6 +67,9 @@ class AnalyserCore:
                     self.NAMES[element] = max(self.NAMES.values())+1
 
                 self.CODTS.append({self.TERMS[self.CATEGORY[element[0]]]: self.NAMES[element]})
+
+            else:
+                raise SyntaxError("Syntax error for " + element)
 
     def show(self):
         print(self.CODTS)
