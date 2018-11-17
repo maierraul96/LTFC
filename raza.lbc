@@ -1,0 +1,14 @@
+~NOTITE~
+    NOTITA_NUMAR_ZECIMAL #raza #arie #perimetru atat
+~GATA_CU_NOTITELE~
+~MISIUNI_PENTRU_SOT~
+
+    #raza devine z10.0 bine?
+
+    #perimetru devine i2 * i3.14 * #raza bine?
+    #arie devine z3.14 * #raza * #raza bine?
+    destainuie ( t"perimetru" ) bine?
+    destainuie ( #perimetru ) bine?
+    destainuie ( t"arie" ) bine?
+    destainuie ( #arie ) bine?
+~SOTIA_E_MANDRA~

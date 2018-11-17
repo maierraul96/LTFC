@@ -1,0 +1,20 @@
+~NOTITE~
+    NOTITA_NUMAR_INTREG #primul #aldoilea #cmmdc #aux atat
+~GATA_CU_NOTITELE~
+
+~MISIUNI_PENTRU_SOT~
+    #primul devine i100 bine?
+    #aldoilea devine i75 bine?
+
+    atata_timp_cat #primul nu_este #aldoilea onoreaza
+        no_daca #primul ii_mai_mare_decat #aldoilea onoreaza
+            #primul devine #primul - #aldoilea bine?
+            GATA_CU_ONORAREA
+        daca_nu onoreaza
+            #aldoilea devine #aldoilea - #primul bine?
+            GATA_CU_ONORAREA
+     GATA_CU_ONORAREA
+
+    destainuie ( t"cmmdc" ) bine?
+    destainuie ( #primul ) bine?
+~SOTIA_E_MANDRA~
