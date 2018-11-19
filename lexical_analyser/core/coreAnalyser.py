@@ -1,5 +1,6 @@
 from lexical_analyser.parser import Parser
 
+
 class AnalyserCore:
     TERMS = {
         "NOTITA": 0,
