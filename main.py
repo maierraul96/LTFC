@@ -1,6 +1,7 @@
 from lexical_analyser.core.coreAnalyser import *
 from lexical_analyser.printer import Printer
-from lexical_analyser.core.FiniteAutomate import *
+from lexical_analyser.afMeniu import Menu
+from lexical_analyser.core.finiteAutomate import *
 
 # analyser = AnalyserCore("raza.lbc")
 #
@@ -14,5 +15,9 @@ from lexical_analyser.core.FiniteAutomate import *
 
 af = AF()
 af.load_states_from_file("AF.json")
-af.set_input("102.4.0")
-print(af.digest())
+menu = Menu(af)
+af.set_input("102.0")
+menu.run()
+
+
+
