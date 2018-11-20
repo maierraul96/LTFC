@@ -32,7 +32,7 @@ class AF:
         self.states = states
         self.setup()
 
-    def set_initial_state(self, state = None):
+    def set_initial_state(self, state=None):
         if state is None:
             self.current_state = list(filter(lambda st: StateType.INITIAL in st.state_type, self.states.values()))[0]
         else:
@@ -62,11 +62,6 @@ class AF:
     def set_input(self, input_seq):
         self.input_seq = input_seq
         self.setup()
-
-    def get_state_name(self, state):
-        for state_name in self.states.keys():
-            if self.states[state] is self.current_state:
-                print(state)
 
     def step(self):
         if len(self.input_seq):
