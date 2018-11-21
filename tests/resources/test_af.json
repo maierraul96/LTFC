@@ -1,0 +1,77 @@
+{
+  "non-zr-start":{
+    "state_type": ["INITIAL"],
+    "transitions": [
+      {
+        "next_state": "intreg",
+        "conditions": ["1","2","3","4","5","6","7","8","9"]
+      },
+      {
+        "next_state": "start_zecimal",
+        "conditions": ["0"]
+      }
+    ]
+  },
+  "intreg":{
+    "state_type": ["TERMINAL"],
+    "transitions": [
+      {
+        "next_state": "punct",
+        "conditions": ["."]
+      },
+      {
+        "next_state": "intreg",
+        "conditions": ["0","1","2","3","4","5","6","7","8","9"]
+      }
+    ]
+  },
+
+  "start_zecimal":{
+    "state_type": [],
+    "transitions": [
+      {
+        "next_state": "punct",
+        "conditions": ["."]
+      }
+    ]
+  },
+
+  "punct":{
+    "state_type": [],
+    "transitions": [
+      {
+        "next_state": "non-zr-end",
+        "conditions": ["0","1","2","3","4","5","6","7","8","9"]
+      }
+    ]
+  },
+
+  "zecimal":{
+    "state_type": [],
+    "transitions": [
+      {
+        "next_state": "zecimal",
+        "conditions": ["0"]
+      },
+
+      {
+        "next_state": "non-zr-end",
+        "conditions": ["1","2","3","4","5","6","7","8","9"]
+      }
+    ]
+  },
+
+  "non-zr-end":{
+    "state_type": ["TERMINAL"],
+    "transitions": [
+      {
+        "next_state": "zecimal",
+        "conditions": ["0"]
+      },
+      {
+        "next_state": "non-zr-end",
+        "conditions": ["1","2","3","4","5","6","7","8","9"]
+      }
+    ]
+  }
+}
