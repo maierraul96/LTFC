@@ -89,7 +89,7 @@ class AF:
         return self.max_length
 
     def get_states_names(self):
-        return self.states.keys()
+        return list(self.states.keys())
 
     def get_transitions(self):
         transitions = list()

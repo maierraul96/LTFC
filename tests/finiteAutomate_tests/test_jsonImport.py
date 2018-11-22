@@ -33,10 +33,3 @@ class JsonImportTest(AfTestCase):
         self.assertListEqual(self.af.states['start'].state_type, [StateType.INITIAL, StateType.TERMINAL])
         self.assertListEqual(self.af.states['middle'].state_type, [])
         self.assertListEqual(self.af.states['end'].state_type, [StateType.TERMINAL])
-
-
-class MyTestCase(AfTestCase):
-    def test_setup(self):
-        self.assertEqual(self.af.current_state.name, 'start')
-        self.assertEqual(self.af.max_length, 0)
-        self.assertListEqual(self.af.history, list())
