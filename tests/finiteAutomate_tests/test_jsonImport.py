@@ -1,19 +1,14 @@
-import unittest
-from lexical_analyser.core.finiteAutomate import *
+from lexical_analyser.core.finiteAutomate import StateType
+from tests.finiteAutomate_tests.afTestCase import AfTestCase
 
 
-class JsonImportTest(unittest.TestCase):
-    af = None
-
-    def setUp(self):
-        self.af = AF()
-        self.af.load_states_from_file("resources/test_af.json")
+class JsonImportTest(AfTestCase):
 
     def test_count_states(self):
         self.assertEqual(len(self.af.states), 3)
 
-    def test_states(self):
-        self.assertListEqual(list(self.af.states.keys()),
+    def test_states_name(self):
+        self.assertSequenceEqual(list(self.af.states.keys()),
                              ['start', 'middle', 'end'])
         self.assertEqual(self.af.states['start'].name, 'start')
         self.assertEqual(self.af.states['middle'].name, 'middle')
@@ -34,6 +29,13 @@ class JsonImportTest(unittest.TestCase):
         self.assertEqual(self.af.states['middle'].transitions[0].next_state, 'end')
         self.assertEqual(self.af.states['end'].transitions[0].next_state, 'end')
 
+    def test_states_type(self):
+        self.assertListEqual(self.af.states['start'].state_type, [StateType.INITIAL, StateType.TERMINAL])
+        self.assertListEqual(self.af.states['middle'].state_type, [])
+        self.assertListEqual(self.af.states['end'].state_type, [StateType.TERMINAL])
+
+
+class MyTestCase(AfTestCase):
     def test_setup(self):
         self.assertEqual(self.af.current_state.name, 'start')
         self.assertEqual(self.af.max_length, 0)
