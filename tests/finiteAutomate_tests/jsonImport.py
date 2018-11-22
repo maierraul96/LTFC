@@ -38,7 +38,3 @@ class JsonImportTest(unittest.TestCase):
         self.assertEqual(self.af.current_state.name, 'start')
         self.assertEqual(self.af.max_length, 0)
         self.assertListEqual(self.af.history, list())
-
-
-if __name__ == '__main__':
-    unittest.main()
