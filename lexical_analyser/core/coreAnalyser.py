@@ -1,4 +1,4 @@
-from lexical_analyser.parser import Parser
+from lexical_analyser.IO.parser import Parser
 
 
 class AnalyserCore:

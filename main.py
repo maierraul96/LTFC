@@ -1,8 +1,5 @@
-from lexical_analyser.core.coreAnalyser import *
-from lexical_analyser.printer import Printer
-from lexical_analyser.afMeniu import Menu
-from lexical_analyser.core.finiteAutomate import *
-import unittest
+from finite_automate.ui.afMeniu import Menu
+from finite_automate.core.finiteAutomate import *
 
 # analyser = AnalyserCore("raza.lbc")
 #

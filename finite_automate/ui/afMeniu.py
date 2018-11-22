@@ -1,5 +1,4 @@
-from lexical_analyser.core.finiteAutomate import *
-from lexical_analyser.printer import *
+from lexical_analyser.IO.printer import *
 
 
 class Menu:

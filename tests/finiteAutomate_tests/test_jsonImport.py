@@ -1,4 +1,4 @@
-from lexical_analyser.core.finiteAutomate import StateType
+from finite_automate.core.finiteAutomate import StateType
 from tests.finiteAutomate_tests.afTestCase import AfTestCase
 
 

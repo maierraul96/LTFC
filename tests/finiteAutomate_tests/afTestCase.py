@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from lexical_analyser.core.finiteAutomate import AF
+from finite_automate.core.finiteAutomate import AF
 
 
 class AfTestCase(TestCase):
