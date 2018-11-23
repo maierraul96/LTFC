@@ -68,11 +68,12 @@ class AF:
             valid_transition = list(filter(lambda x: self.input_seq[0] in x.conditions, self.current_state.transitions))
             if len(valid_transition):
                 self.input_seq = self.input_seq[1:]
+                self.history.append(self.current_state.name)
                 self.current_state = self.states[valid_transition[0].next_state]
                 self.max_length += 1
-                return 0
+                return True
             else:
-                return 1
+                return False
         else:
             raise ValueError("Input sequence terminated")
 
