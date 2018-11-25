@@ -1,7 +1,7 @@
 from tests.finiteAutomate_tests.afTestCase import AfTestCase
 
 
-class CoreTests(AfTestCase):
+class CoreTestsStep(AfTestCase):
     def test_step_c1(self):
         self.af.set_input('101')
         self.assertEqual(self.af.current_state.name, 'start')
@@ -83,3 +83,9 @@ class CoreTests(AfTestCase):
             self.af.step()
         the_exception = error.exception
         self.assertEqual(str(the_exception), 'Input sequence terminated')
+
+
+class CoreTestDigest(AfTestCase):
+    def test_digest_c1(self):
+        self.af.set_input('i123')
+        self.assertEqual(self.af.digest(), False)

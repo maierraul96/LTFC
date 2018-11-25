@@ -26,6 +26,8 @@ class AF:
         self.current_state = None
         self.input_seq = None
         self.max_length = 0
+        self.msg = ''
+        self.acceptance = None
         self.history = list()
 
     def load_states(self, states):
@@ -41,6 +43,8 @@ class AF:
     def setup(self):
         self.set_initial_state()
         self.max_length = 0
+        self.msg = ''
+        self.acceptance = None
         self.history = list()
 
     @staticmethod
@@ -79,15 +83,35 @@ class AF:
 
     def digest(self):
         while len(self.input_seq):
-            if self.step() == 1:
-                return False, "Max valid sequence length: {}".format(self.max_length)
+            if self.step() is False:
+                self.acceptance = False
+                self.msg = "Invalid sequence"
+                return False
         if StateType.TERMINAL in self.current_state.state_type:
-            return True, "Valid sequence"
+            self.acceptance = True
+            self.msg = "Valid sequence"
+            return True
         else:
-            return False, "Left in non-terminal state. Length: {}".format(self.max_length)
+            self.acceptance = False
+            self.msg = "Left in non-terminal state"
+            return False
+
+    def verify(self, input_seq):
+        self.set_input(input_seq)
+        self.digest()
+        return self.acceptance, self.max_length, self.msg
 
     def get_max_length(self):
         return self.max_length
+
+    def get_acceptance(self):
+        return self.acceptance
+
+    def get_msg(self):
+        return self.msg
+
+    def get_history(self):
+        return self.history
 
     def get_states_names(self):
         return list(self.states.keys())
