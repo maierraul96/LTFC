@@ -64,7 +64,7 @@ class AF:
             self.load_states(self.classify_json(states))
 
     def set_input(self, input_seq):
-        self.input_seq = input_seq
+        self.input_seq = str(input_seq)
         self.setup()
 
     def step(self):
