@@ -21,7 +21,7 @@ class Transition:
 
 
 class AF:
-    def __init__(self):
+    def __init__(self, path=None):
         self.states = None
         self.current_state = None
         self.input_seq = None
@@ -29,6 +29,8 @@ class AF:
         self.msg = ''
         self.acceptance = None
         self.history = list()
+        if path is not None:
+            self.load_states_from_file(path)
 
     def load_states(self, states):
         self.states = states

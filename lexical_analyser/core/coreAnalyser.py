@@ -1,3 +1,4 @@
+from finite_automate.core.finiteAutomate import AF
 from lexical_analyser.IO.parser import Parser
 
 
@@ -46,13 +47,20 @@ class AnalyserCore:
                 "i": "ADHOC",
                 "z": "ADHOC",
                 "t": "ADHOC",
-                "c": "CUNOSCATOR"}
+                "c": "CUNOSCATOR",
+                "ids": "NOTITA",
+                "zecimal": "ADHOC"
+                }
 
     NAMES = {0: 100}
     CODTS = list()
 
+    afs = dict()
+
     def __init__(self, path):
         self.parser = Parser(path)
+        self.afs['ids'] = AF("resources\\af_definitions\ids.json")
+        self.afs['zecimal'] = AF("resources\\af_definitions\zecimal.json")
 
     def run(self):
         elements = self.parser.get_elements()
@@ -62,7 +70,14 @@ class AnalyserCore:
             if element in self.TERMS.keys():
                 self.CODTS.append({self.TERMS[element]: -1})
 
-            elif element[0] in ["#", "i", "z", "t", "c"]:
+            elif [af for af in self.afs.keys() if self.afs[af].verify(element)[0]]:
+                if element not in self.NAMES.keys():
+                    self.NAMES[element] = max(self.NAMES.values())+1
+
+                category = [af for af in self.afs.keys() if self.afs[af].verify(element)[0]][0]
+                self.CODTS.append({self.TERMS[self.CATEGORY[str(category)]]: self.NAMES[element]})
+
+            elif element[0] in ["i", "t", "c"]:
 
                 if element not in self.NAMES.keys():
                     self.NAMES[element] = max(self.NAMES.values())+1

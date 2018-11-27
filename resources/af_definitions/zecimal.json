@@ -1,6 +1,15 @@
 {
-  "non-zr-start":{
+  "start":{
     "state_type": ["INITIAL"],
+    "transitions": [
+      {
+        "next_state": "non-zr-start",
+        "conditions": ["z"]
+      }
+    ]
+  },
+  "non-zr-start":{
+    "state_type": [],
     "transitions": [
       {
         "next_state": "intreg",
